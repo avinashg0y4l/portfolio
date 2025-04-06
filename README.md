@@ -1,18 +1,26 @@
-🚀 Avinash Goyal's Portfolio
-Welcome to my personal portfolio built using Next.js.
-Live here 👉 https://avinashg0y4l.github.io/portfolio/
+# 🌐 Avinash Goyal | Portfolio Website
 
-📁 Project Structure
-This project was bootstrapped with create-next-app.
+Welcome to my personal portfolio built with **Next.js**, showcasing my projects, skills, and achievements in the field of **Robotics**, **Embedded Systems**, and **Computer Vision**.
 
-You can edit the main content by modifying files inside the app/ directory — especially app/page.js.
+🔗 **Live Site**: [avinashg0y4l.github.io/portfolio](https://avinashg0y4l.github.io/portfolio/)
 
-🚀 Getting Started (For Development)
-To run the development server:
+---
 
-bash
-Copy
-Edit
+## 📁 Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Language**: JavaScript
+- **Styling**: Tailwind CSS
+- **Fonts**: [Geist](https://vercel.com/font) via [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+- **Deployment**: GitHub Pages
+
+---
+
+## 🚀 Getting Started (For Developers)
+
+To run the development server locally:
+
+```bash
 npm run dev
 # or
 yarn dev
@@ -20,22 +28,3 @@ yarn dev
 pnpm dev
 # or
 bun dev
-Open http://localhost:3000 in your browser to view it locally.
-
-🧠 Tech Stack
-Framework: Next.js
-
-Styling: Tailwind CSS / Custom CSS
-
-Fonts: Geist via next/font
-
-📚 Learn More
-Next.js Documentation
-
-Interactive Next.js Tutorial
-
-🌐 Deployment
-This project is deployed using GitHub Pages at
-👉 https://avinashg0y4l.github.io/portfolio/
-
-To deploy, make sure your next.config.js is set up correctly with output: 'export' and the correct basePath.
