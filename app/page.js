@@ -1,6 +1,7 @@
-'use client'
+'use client';
 import { useEffect, useState } from "react";
 import About from "../components/About";
+import ExperienceTimeline from "../components/ExperienceTimeline";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -9,36 +10,73 @@ import Services from "../components/Services";
 import Work from "../components/Work";
 
 export default function Home() {
+  // Initialize state: default to light mode, mark as not mounted initially
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
- const [isDarkMode, setIsDarkMode] = useState(false);
+  // Effect to determine the correct theme based on user preference/system
+  // Runs only once on the client after the component mounts
+  useEffect(() => {
+    // Mark the component as mounted when this effect runs on the client
+    setIsMounted(true);
 
- useEffect(()=>{
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    setIsDarkMode(true)
-  }else{
-    setIsDarkMode(false)
-  }
- },[])
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme'); // Use getItem
 
- useEffect(()=>{
-    if(isDarkMode){
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-    }else{
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = '';
+    // Determine the effective theme state
+    if (storedTheme === 'dark' || (storedTheme === null && prefersDark)) { // Check explicitly for null if not set
+      setIsDarkMode(true);
+    } else {
+      // Covers storedTheme === 'light' or (storedTheme === null && !prefersDark)
+      setIsDarkMode(false);
     }
- },[isDarkMode])
+    // Empty dependency array ensures this runs only once after initial mount
+  }, []);
+
+  // Effect to apply the theme class to the HTML element and save the preference
+  // Runs only after mount and whenever isDarkMode or isMounted changes
+  useEffect(() => {
+    // Prevent execution until the component is mounted on the client
+    if (!isMounted) {
+      return;
+    }
+
+    // Apply the theme class and update localStorage
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark'); // Use setItem
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light'); // Store 'light' explicitly
+      // Or use localStorage.removeItem('theme'); if you prefer no value for light mode
+    }
+    // Depend on both isDarkMode and isMounted
+  }, [isDarkMode, isMounted]);
+
+  // --- Render the UI ---
+  // During the initial render (server-side and first client render before useEffect runs),
+  // isDarkMode will be its initial value (false).
+  // After mounting, the useEffects will run and update isDarkMode if needed,
+  // triggering a re-render with the correct theme. This avoids hydration errors.
+  // A brief visual flash might occur if the user's preference differs from the default.
+
+  // Render null or a loading state *only* if absolutely necessary and you handle
+  // the layout shift implications. Rendering with the default state is usually preferred
+  // for avoiding hydration errors.
+  // if (!isMounted) {
+  //   return null; // Or a loading spinner, but beware of layout shifts
+  // }
 
   return (
     <>
-    <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
-    <Header isDarkMode={isDarkMode} />
-    <About isDarkMode={isDarkMode} />
-    <Services isDarkMode={isDarkMode} />
-    <Work isDarkMode={isDarkMode} />
-    <Contact isDarkMode={isDarkMode} />
-    <Footer isDarkMode={isDarkMode} />
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header isDarkMode={isDarkMode} />
+      <About isDarkMode={isDarkMode} />
+      <ExperienceTimeline isDarkMode={isDarkMode} />
+      <Services isDarkMode={isDarkMode} />
+      <Work isDarkMode={isDarkMode} />
+      <Contact isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 }
