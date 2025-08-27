@@ -19,7 +19,7 @@ const Footer = ({isDarkMode}) => {
         <ul className='flex items-center gap-10 justify-center mt-4 sm:mt-0'>
             <li><a target='_blank' href="https://github.com/avinashg0y4l/">GitHub</a></li>
             <li><a target='_blank' href="https://www.linkedin.com/in/avinash-goyal-g0y4l/">LinkedIn</a></li>
-            <li><a target='_blank' href="https://x.com/avinashg0y4l">Twitter</a></li>
+            <li><a target='_blank' href="#">Twitter</a></li>
         </ul>
     </div>
 
