@@ -9,6 +9,7 @@ import Header from "../components/Header.jsx";
 import Navbar from "../components/Navbar.jsx";
 import Services from "../components/Services.jsx";
 import Work from "../components/Work.jsx";
+import Certificates from "../components/Certificates.jsx";
 
 
 export default function Home() {
@@ -77,6 +78,7 @@ export default function Home() {
       <ExperienceTimeline isDarkMode={isDarkMode} />
       <Services isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
+      <Certificates isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </>
