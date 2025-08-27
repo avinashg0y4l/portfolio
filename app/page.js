@@ -1,13 +1,15 @@
 'use client';
 import { useEffect, useState } from "react";
-import About from "../components/About";
-import ExperienceTimeline from "../components/ExperienceTimeline";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
-import Services from "../components/Services";
-import Work from "../components/Work";
+
+import About from "../components/About.jsx";
+import ExperienceTimeline from "../components/ExperienceTimeline.jsx";
+import Contact from "../components/Contact.jsx";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
+import Navbar from "../components/Navbar.jsx";
+import Services from "../components/Services.jsx";
+import Work from "../components/Work.jsx";
+
 
 export default function Home() {
   // Initialize state: default to light mode, mark as not mounted initially
