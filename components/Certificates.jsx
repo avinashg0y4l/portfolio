@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+
 import cert1 from "../assets/certificates/SAP_Certificate.png";
 import cert2 from "../assets/certificates/salesforce.png";
 import cert3 from "../assets/certificates/Github.png";
@@ -12,7 +13,7 @@ import cert5 from "../assets/certificates/Kodacy.png";
 import cert6 from "../assets/certificates/tcs_codevita.png";
 
 
-
+const MotionLink = motion(Link);
 const certificates = [
   { id: 1, src: cert1, title: "Certificate 1" },
   { id: 2, src: cert2, title: "Certificate 2" },
@@ -103,20 +104,20 @@ const Certificates = ({ isDarkMode }) => {
       </motion.div>
 
       {/* Show More Button */}
-      <motion.Link  
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 1.1, duration: 0.5 }}
-        href="/certifications"
-        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover"
-      >
-        Show more
-        <Image
-          src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
-          alt="Right arrow"
-          className="w-4"
-        />
-      </motion.Link>
+      <MotionLink
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 1.1, duration: 0.5 }}
+  href="/certifications"
+  className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover"
+>
+  Show more
+  <Image
+    src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
+    alt="Right arrow"
+    className="w-4"
+  />
+</MotionLink>
 
       {/* Zoom Modal */}
       <AnimatePresence>
