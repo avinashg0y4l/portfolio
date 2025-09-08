@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FaGithub, FaGlobe, FaTimes } from "react-icons/fa";
 
-
+import Link from "next/link";
+const MotionLink = motion(Link);
 const Work = ({ isDarkMode }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -83,7 +84,7 @@ const Work = ({ isDarkMode }) => {
       </motion.div>
 
       {/* Show More Button */}
-      <motion.a
+      <MotionLink
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 0.5 }}
@@ -92,13 +93,11 @@ const Work = ({ isDarkMode }) => {
       >
         Show more
         <Image
-          src={
-            isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold
-          }
+          src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
           alt="Right arrow"
           className="w-4"
         />
-      </motion.a>
+      </MotionLink>
 
       {/* Project Modal */}
       <AnimatePresence>
