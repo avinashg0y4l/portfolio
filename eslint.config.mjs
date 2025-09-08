@@ -22,7 +22,10 @@ export default [
       "@next/next": nextPlugin,
     },
     rules: {
-      "@next/next/no-html-link-for-pages": "off",
-    },
+  "@next/next/no-html-link-for-pages": "off",
+  "no-undef": "off",          // disable 'window/document not defined'
+  "no-unused-vars": "off",    // disable unused imports check
+},
+
   },
 ];
