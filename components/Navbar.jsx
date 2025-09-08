@@ -74,22 +74,22 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         }`}
       >
         <li>
-          <Link className="font-Ovo" href="/#top">
+          <Link className="font-Ovo" href="/#top" scroll={false}>
             Home
           </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#about">
+          <Link className="font-Ovo" href="/#about" scroll={false}>
             About me
           </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#services">
+          <Link className="font-Ovo" href="/#services" scroll={false}>
             Services
           </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#work">
+          <Link className="font-Ovo" href="/#work" scroll={false}>
             My Work
           </Link>
         </li>
@@ -99,7 +99,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#contact">
+          <Link className="font-Ovo" href="/#contact" scroll={false}>
             Contact me
           </Link>
         </li>
@@ -133,7 +133,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         <button className="block md:hidden ml-3" onClick={openMenu}>
           <Image
             src={isDarkMode ? assets.menu_white : assets.menu_black}
-            alt="menu"
+            alt="menu"  
             className="w-6"
           />
         </button>
