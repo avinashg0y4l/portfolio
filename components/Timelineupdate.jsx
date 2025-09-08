@@ -1,25 +1,25 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { experiencesData } from "../assets/experienceData";
 
 const Milestone = ({ experience, isActive, isDarkMode }) => {
-  const bgColor = isDarkMode ? "#1e293b" : "#ffffff";
-  const textColor = isDarkMode ? "#e2e8f0" : "#334155";
-  const titleColor = isDarkMode ? "text-white" : "text-gray-900";
-  const companyColor = isDarkMode ? "text-gray-300" : "text-gray-700";
-
   return (
     <motion.div
-      className="flex-shrink-0 w-64 p-4 rounded-lg shadow-md border border-gray-300 dark:border-gray-700"
-      style={{ background: bgColor, color: textColor }}
+      className="flex-shrink-0 w-64 p-6 rounded-2xl border border-gray-400 
+                 shadow-md cursor-pointer 
+                 hover:-translate-y-1 duration-500
+                 hover:bg-lightHover dark:hover:bg-darkHover/50
+                 dark:border-white/50"
       initial={{ opacity: 0, y: 50 }}
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
     >
-      <h3 className={`text-lg font-bold ${titleColor}`}>{experience.title}</h3>
-      <p className={`mt-1 font-semibold ${companyColor}`}>
+      <h3 className="text-lg font-semibold font-Ovo text-gray-800 dark:text-white">
+        {experience.title}
+      </h3>
+      <p className="mt-2 text-sm font-Ovo text-gray-600 dark:text-white/80">
         {experience.company_name} • {experience.date}
       </p>
     </motion.div>
@@ -38,9 +38,12 @@ const HorizontalJourneyPinned = ({ isDarkMode }) => {
       const windowHeight = window.innerHeight;
       const scrollTop = window.scrollY;
 
-      // Only update progress when in the section
-      if (scrollTop >= containerTop && scrollTop <= containerTop + containerHeight) {
-        const progress = (scrollTop - containerTop) / (containerHeight - windowHeight);
+      if (
+        scrollTop >= containerTop &&
+        scrollTop <= containerTop + containerHeight
+      ) {
+        const progress =
+          (scrollTop - containerTop) / (containerHeight - windowHeight);
         setScrollProgress(Math.min(Math.max(progress, 0), 1));
       }
     };
@@ -53,30 +56,48 @@ const HorizontalJourneyPinned = ({ isDarkMode }) => {
   const activeIndex = Math.floor(scrollProgress * experiencesData.length);
 
   return (
-    <section
+    <motion.section
       ref={containerRef}
-      className="relative w-full"
-      style={{ height: "150vh" }} // make tall enough for scroll-jack
+      id="journey"
+      className="relative w-full px-[12%] py-10 scroll-mt-20"
+      style={{ height: "150vh" }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 text-gray-800 dark:text-white">
-        My Journey
-      </h2>
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="sticky top-24 text-center mb-2 text-lg font-Ovo text-gray-700 dark:text-white/80"
+      >
+        Timeline
+      </motion.h4>
 
-      {/* Pinned horizontal timeline */}
-      <div className="sticky top-40">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="sticky top-36 z-20 text-center text-5xl font-Ovo text-gray-800 dark:text-white"
+      >
+        My Journey
+      </motion.h2>
+
+      {/* Timeline */}
+      <div className="sticky top-56">
         <div className="relative w-full overflow-hidden">
           {/* Timeline line */}
-          <div className="absolute top-20 left-0 w-full h-1 bg-gray-300 dark:bg-gray-600"></div>
+<div className="absolute top-56 left-0 w-full h-[2px] bg-gray-400 dark:bg-gray-600"></div>
 
-          {/* Dot */}
-          <motion.div
-            className="absolute top-14 w-6 h-6 bg-blue-500 rounded-full z-10"
-            style={{ left: `${scrollProgress * 100}%`, translateX: "-50%" }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          />
+{/* Moving Dot */}
+<motion.div
+  className="absolute top-[200px] w-6 h-6 bg-blue-500 rounded-full shadow-lg z-10"
+  style={{ left: `${scrollProgress * 100}%`, translateX: "-50%" }}
+  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+/>
 
-          {/* Milestones horizontally */}
-          <div className="flex gap-20 px-8 py-8">
+          {/* Milestones */}
+          <div className="flex gap-20 px-8 py-12">
             {experiencesData.map((exp, idx) => (
               <Milestone
                 key={exp.id}
@@ -89,9 +110,9 @@ const HorizontalJourneyPinned = ({ isDarkMode }) => {
         </div>
       </div>
 
-      {/* Space after journey so next section continues */}
+      {/* Spacer */}
       <div style={{ height: "50vh" }}></div>
-    </section>
+    </motion.section>
   );
 };
 

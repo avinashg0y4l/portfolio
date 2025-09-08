@@ -76,28 +76,7 @@ export const assets = {
     right_arrow_bold_dark
 };
 
-export const workData = [
-    {
-        title: 'Traffic Safety Analysis',
-        description: 'Calculating Traffic Safety Metrics (TTC, PET, DST, GT) Using AI and Computer Vision',
-        bgImage: './work-1.png',
-    },
-    {
-        title: 'AI Recruitment Automation',
-        description: 'Multi-Agent AI System for Automated Job Candidate Screening and Shortlisting',
-        bgImage: './work-2.png',
-    },
-    {
-        title: 'Photography site',
-        description: 'Web Design',
-        bgImage: './work-3.png',
-    },
-    {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
-        bgImage: './work-4.png',
-    },
-]
+
 
 export const serviceData = [
     { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },

@@ -1,51 +1,73 @@
-// components/HorizontalJourneySticky.jsx
 "use client";
-
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { experiencesData } from "../assets/experienceData";
 
-const Milestone = ({ experience, isActive, isDarkMode }) => {
-  const bgColor = isDarkMode ? "#1e293b" : "#ffffff";
-  const textColor = isDarkMode ? "#e2e8f0" : "#334155";
-  const titleColor = isDarkMode ? "text-white" : "text-gray-900";
-  const companyColor = isDarkMode ? "text-gray-300" : "text-gray-700";
+const RoadmapJourney = () => {
+  const milestones = [
+    { id: 1, title: "Leading Self", desc: "Effective leadership for faster success", icon: "🚀" },
+    { id: 2, title: "Leading Others", desc: "Collaborating to achieve results", icon: "🤝" },
+    { id: 3, title: "Leading Managers", desc: "Build leadership skills and strategy", icon: "📊" },
+    { id: 4, title: "Leading Functions", desc: "Ability to lead strategically", icon: "⚙️" },
+    { id: 5, title: "Leading Organisation", desc: "Maximize leadership power for organisation", icon: "🏢" },
+  ];
 
-  return (
-    <motion.div
-      className="flex-shrink-0 w-64 p-4 rounded-lg shadow-md border border-gray-300 dark:border-gray-700"
-      style={{ background: bgColor, color: textColor }}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isActive ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-    >
-      <h3 className={`text-lg font-bold ${titleColor}`}>{experience.title}</h3>
-      <p className={`mt-1 font-semibold ${companyColor}`}>
-        {experience.company_name} • {experience.date}
-      </p>
-    </motion.div>
-  );
-};
+  const sectionRef = useRef(null);
+  const pathRef = useRef(null);
+  const [dotPos, setDotPos] = useState({ x: 0, y: 0 });
+  const [progress, setProgress] = useState(0);
+  const [pathD, setPathD] = useState("");
+  const [milestonePositions, setMilestonePositions] = useState([]);
 
-const HorizontalJourneySticky = ({ isDarkMode }) => {
-  const containerRef = useRef(null);
-  const innerRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // Update path based on screen width
+  useEffect(() => {
+    const updatePath = () => {
+      if (window.innerWidth < 640) {
+        // Small screens → vertical wave
+        setPathD("M 10 5 C 20 25, 40 20, 50 40 C 60 60, 40 70, 50 90");
+      } else {
+        // Larger screens → diagonal wave (top-left → bottom-right)
+        setPathD("M 5 5 C 20 20, 40 10, 50 30 C 60 50, 80 40, 95 95");
+      }
+    };
 
+    updatePath();
+    window.addEventListener("resize", updatePath);
+    return () => window.removeEventListener("resize", updatePath);
+  }, []);
+
+  // Calculate milestone positions along the path
+  useEffect(() => {
+    if (!pathRef.current || !pathD) return;
+
+    const pathLength = pathRef.current.getTotalLength();
+    const positions = milestones.map((_, idx) => {
+      const fraction = idx / (milestones.length - 1);
+      return pathRef.current.getPointAtLength(fraction * pathLength);
+    });
+
+    setMilestonePositions(positions);
+  }, [pathD]);
+
+  // Move dot on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current || !innerRef.current) return;
+      if (!pathRef.current || !sectionRef.current) return;
 
-      const containerTop = containerRef.current.offsetTop;
-      const containerHeight = containerRef.current.offsetHeight;
+      const sectionTop = sectionRef.current.offsetTop;
+      const sectionHeight = sectionRef.current.offsetHeight;
       const windowHeight = window.innerHeight;
-      const scrollTop = window.scrollY;
+      const scrollY = window.scrollY;
 
-      // Calculate how much we have scrolled in the container
-      const start = containerTop - windowHeight * 0.5;
-      const end = containerTop + containerHeight - windowHeight * 0.5;
-      const progress = Math.min(Math.max((scrollTop - start) / (end - start), 0), 1);
-      setScrollProgress(progress);
+      if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight - windowHeight) {
+        const localScroll = scrollY - sectionTop;
+        const localProgress = localScroll / (sectionHeight - windowHeight);
+
+        const pathLength = pathRef.current.getTotalLength();
+        const point = pathRef.current.getPointAtLength(localProgress * pathLength);
+
+        setProgress(localProgress);
+        setDotPos({ x: point.x, y: point.y });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -53,45 +75,88 @@ const HorizontalJourneySticky = ({ isDarkMode }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const activeIndex = Math.floor(scrollProgress * experiencesData.length);
-
   return (
     <section
-      ref={containerRef}
-      className="py-40 scroll-mt-20 relative overflow-hidden"
-      style={{ height: "120vh" }} // make it tall so scroll drives horizontal motion
+      ref={sectionRef}
+      id="roadmap"
+      className="relative w-full px-[6%] py-16 bg-white dark:bg-gray-900"
+      style={{ height: "150vh" }}
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 text-gray-800 dark:text-white">
-        My Journey
+      <h2 className="text-center text-3xl sm:text-5xl font-bold text-gray-800 dark:text-white mb-12 sticky top-10">
+        Leadership Development Roadmap
       </h2>
 
-      <div className="sticky top-40">
-        <div ref={innerRef} className="relative w-full overflow-hidden">
-          {/* Timeline line */}
-          <div className="absolute top-20 left-0 w-full h-1 bg-gray-300 dark:bg-gray-600"></div>
-
-          {/* Dot */}
-          <motion.div
-            className="absolute top-14 w-6 h-6 bg-blue-500 rounded-full z-10"
-            style={{ left: `${scrollProgress * 100}%`, translateX: "-50%" }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      <div className="relative w-full max-w-5xl mx-auto sticky top-32">
+        <svg
+          className="w-full h-[600px] sm:h-[750px]"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          {/* Road background */}
+          <path
+            ref={pathRef}
+            d={pathD}
+            stroke="#555"
+            strokeWidth="10"
+            fill="none"
+            strokeLinecap="round"
+          />
+          {/* Road center dashed line */}
+          <path
+            d={pathD}
+            stroke="white"
+            strokeWidth="2"
+            fill="none"
+            strokeDasharray="4,4"
           />
 
-          {/* Milestones horizontally */}
-          <div className="flex gap-20 px-8 py-8">
-            {experiencesData.map((exp, idx) => (
-              <Milestone
-                key={exp.id}
-                experience={exp}
-                isActive={idx <= activeIndex}
-                isDarkMode={isDarkMode}
-              />
-            ))}
-          </div>
-        </div>
+          {/* Moving dot */}
+          <motion.circle
+            cx={dotPos.x}
+            cy={dotPos.y}
+            r="2.5"
+            fill="red"
+            stroke="white"
+            strokeWidth="1"
+          />
+        </svg>
+
+        {/* Milestones appear at path points */}
+        {milestones.map((milestone, idx) => {
+          if (!milestonePositions[idx]) return null;
+
+          const { x, y } = milestonePositions[idx];
+          const threshold = idx / (milestones.length - 1);
+          const isVisible = progress >= threshold - 0.02;
+
+          return (
+            <motion.div
+              key={milestone.id}
+              className={`absolute w-40 sm:w-56 p-4 rounded-xl border shadow-md bg-white dark:bg-gray-800
+                ${idx % 2 === 0 ? "translate-x-[-110%]" : "translate-x-[10%]"} 
+              `}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6 }}
+              style={{
+                left: `${x}%`,
+                top: `${y}%`,
+                transform: `translate(-50%, -50%) ${idx % 2 === 0 ? "translateX(-110%)" : "translateX(10%)"}`,
+              }}
+            >
+              <h3 className="text-base sm:text-lg font-semibold flex items-center text-gray-800 dark:text-white">
+                <span className="mr-2">{milestone.icon}</span>
+                {milestone.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-1">
+                {milestone.desc}
+              </p>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
 };
 
-export default HorizontalJourneySticky;
+export default RoadmapJourney;
