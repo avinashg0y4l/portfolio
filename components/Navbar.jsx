@@ -57,13 +57,13 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         }`}
       >
         {/* Logo */}
-        <a href="#top">
+        <Link href="#top">
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="logo"
             className="w-28 cursor-pointer mr-14"
           />
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <ul
@@ -74,24 +74,24 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           }`}
         >
           <li>
-            <a className="font-Ovo" href="#top">
+            <Link className="font-Ovo" href="/#top">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#about">
+            <Link className="font-Ovo" href="/#about">
               About me
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#services">
+            <Link className="font-Ovo" href="/#services">
               Services
             </Link>
           </li>
           <li>
-            <a className="font-Ovo" href="#work">
+            <Link className="font-Ovo" href="/#work">
               My Work
-            </a>
+            </Link  >
           </li>
           <li>
             <a className="font-Ovo" href="#contact">

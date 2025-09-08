@@ -1,3 +1,4 @@
+"use client"
 import cert1 from "@/assets/certificates/SAP_Certificate.png";
 import cert2 from "@/assets/certificates/salesforce.png";
 import cert3 from "@/assets/certificates/Github.png";
@@ -10,6 +11,10 @@ import cert9 from "@/assets/certificates/certificat_add_a-04.png";
 import cert10 from "@/assets/certificates/certificat_add_a-05.png";
 import cert11 from "@/assets/certificates/certificat_add_a-06.png";
 import cert12 from "@/assets/certificates/certificat_add_a-08.png";
+import cert13 from "@/assets/certificates/certificat_add_a-09.png";
+import cert14 from "@/assets/certificates/certificat_add_a-10.png";
+
+
 
 export const certificates = [
     {
@@ -82,6 +87,7 @@ export const certificates = [
         description:
             "Successfully participated in TCS CodeVita coding competition, solving algorithmic challenges under time constraints. Gained exposure to competitive programming and problem-solving at scale."
     },
+    
     {
         id: 8,
         src: cert7,
@@ -132,6 +138,12 @@ export const certificates = [
         description:
             "Description for Certificate A-06."
     },
+    {
+        id: 13,
+        src: cert12,
+        title: "Certificate A-07",
+        issuer: ""
+    }
 ];
 
 
