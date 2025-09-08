@@ -1,6 +1,7 @@
 "use client";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
@@ -78,9 +79,9 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             </a>
           </li>
           <li>
-            <a className="font-Ovo" href="/#about">
+            <Link className="font-Ovo" href="/#about">
               About me
-            </a>
+            </Link>
           </li>
           <li>
             <a className="font-Ovo" href="/#services">
