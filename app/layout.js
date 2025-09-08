@@ -1,6 +1,6 @@
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css"; 
-import ScrollHandler from "@/components/ScrollHandler";
+import ScrollHandler from "./components/scrollHandler";
 
 const outfit = Outfit({
   subsets: ["latin"],
