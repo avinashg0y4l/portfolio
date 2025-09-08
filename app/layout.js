@@ -1,6 +1,6 @@
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css"; 
-import ScrollHandler from "../components/scrollHandler";
+
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
       >
-        <ScrollHandler />
+        
         {children}
       </body>
     </html>
