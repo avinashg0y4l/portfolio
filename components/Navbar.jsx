@@ -57,7 +57,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         }`}
       >
         {/* Logo */}
-        <a href="/#top">
+        <a href="#top">
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="logo"
@@ -79,22 +79,22 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             </a>
           </li>
           <li>
-            <Link className="font-Ovo" href="/#about">
+            <Link className="font-Ovo" href="#about">
               About me
             </Link>
           </li>
           <li>
-            <a className="font-Ovo" href="/#services">
+            <Link className="font-Ovo" href="#services">
               Services
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="font-Ovo" href="/#work">
+            <a className="font-Ovo" href="#work">
               My Work
             </a>
           </li>
           <li>
-            <a className="font-Ovo" href="/#contact">
+            <a className="font-Ovo" href="#contact">
               Contact me
             </a>
           </li>
