@@ -2,6 +2,7 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 import cert1 from "../assets/certificates/SAP_Certificate.png";
 import cert2 from "../assets/certificates/salesforce.png";
@@ -102,7 +103,7 @@ const Certificates = ({ isDarkMode }) => {
       </motion.div>
 
       {/* Show More Button */}
-      <motion.a
+      <motion.Link  
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 0.5 }}
@@ -115,7 +116,7 @@ const Certificates = ({ isDarkMode }) => {
           alt="Right arrow"
           className="w-4"
         />
-      </motion.a>
+      </motion.Link>
 
       {/* Zoom Modal */}
       <AnimatePresence>
