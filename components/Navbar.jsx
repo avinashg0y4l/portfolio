@@ -57,7 +57,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
       }`}
     >
       {/* Logo */}
-      <Link href="#top">
+      <Link href="/">
         <Image
           src={isDarkMode ? assets.logo_dark : assets.logo}
           alt="logo"
@@ -74,22 +74,34 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         }`}
       >
         <li>
-          <Link className="font-Ovo" href="#top">Home</Link>
+          <Link className="font-Ovo" href="/#top">
+            Home
+          </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#about">About me</Link>
+          <Link className="font-Ovo" href="/#about">
+            About me
+          </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#services">Services</Link>
+          <Link className="font-Ovo" href="/#services">
+            Services
+          </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/#work">My Work</Link>
+          <Link className="font-Ovo" href="/#work">
+            My Work
+          </Link>
         </li>
         <li>
-          <Link className="font-Ovo" href="/certifications">Certifications</Link>
+          <Link className="font-Ovo" href="/certifications">
+            Certifications
+          </Link>
         </li>
         <li>
-          <a className="font-Ovo" href="#contact">Contact me</a>
+          <Link className="font-Ovo" href="/#contact">
+            Contact me
+          </Link>
         </li>
       </ul>
 
@@ -105,8 +117,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         </button>
 
         {/* Contact Button */}
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50"
         >
           Contact
@@ -115,10 +127,10 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             alt="arrow"
             className="w-3"
           />
-        </a>
+        </Link>
 
         {/* Mobile menu toggle */}
-        <button className="block md:hidden ml-3" onClick={() => (sideMenuRef.current.style.transform = "translateX(-16rem)")}>
+        <button className="block md:hidden ml-3" onClick={openMenu}>
           <Image
             src={isDarkMode ? assets.menu_white : assets.menu_black}
             alt="menu"
@@ -132,7 +144,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         ref={sideMenuRef}
         className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
       >
-        <div className="absolute right-6 top-6" onClick={() => (sideMenuRef.current.style.transform = "translateX(16rem)")}>
+        <div className="absolute right-6 top-6" onClick={closeMenu}>
           <Image
             src={isDarkMode ? assets.close_white : assets.close_black}
             alt="close"
@@ -140,16 +152,41 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           />
         </div>
 
-        <li><a className="font-Ovo" href="#top">Home</a></li>
-        <li><a className="font-Ovo" href="#about">About me</a></li>
-        <li><a className="font-Ovo" href="#services">Services</a></li>
-        <li><a className="font-Ovo" href="#work">My Work</a></li>
-        <li><a className="font-Ovo" href="/certifications">Certifications</a></li>
-        <li><a className="font-Ovo" href="#contact">Contact me</a></li>
+        <li>
+          <Link className="font-Ovo" href="/#top" onClick={closeMenu}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link className="font-Ovo" href="/#about" onClick={closeMenu}>
+            About me
+          </Link>
+        </li>
+        <li>
+          <Link className="font-Ovo" href="/#services" onClick={closeMenu}>
+            Services
+          </Link>
+        </li>
+        <li>
+          <Link className="font-Ovo" href="/#work" onClick={closeMenu}>
+            My Work
+          </Link>
+        </li>
+        <li>
+          <Link className="font-Ovo" href="/certifications" onClick={closeMenu}>
+            Certifications
+          </Link>
+        </li>
+        <li>
+          <Link className="font-Ovo" href="/#contact" onClick={closeMenu}>
+            Contact me
+          </Link>
+        </li>
       </ul>
     </nav>
   </>
 );
+
 };
 
 export default Navbar;

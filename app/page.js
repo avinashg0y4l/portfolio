@@ -72,17 +72,38 @@ export default function Home() {
   // }
 
   return (
-    <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode} />
-      <About isDarkMode={isDarkMode} />
-     {/* <Timeline isDarkMode={isDarkMode} />*/}
-      <ExperienceTimeline isDarkMode={isDarkMode} /> 
-      <Services isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
-      <Certificates isDarkMode={isDarkMode} />
-      <Contact isDarkMode={isDarkMode} />
-      <Footer isDarkMode={isDarkMode} />
-    </>
-  );
+  <>
+    <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+    <Header isDarkMode={isDarkMode} />
+
+    <main>
+      <section id="about">
+        <About isDarkMode={isDarkMode} />
+      </section>
+
+      <section id="experience">
+        <ExperienceTimeline isDarkMode={isDarkMode} />
+      </section>
+
+      <section id="services">
+        <Services isDarkMode={isDarkMode} />
+      </section>
+
+      <section id="work">
+        <Work isDarkMode={isDarkMode} />
+      </section>
+
+      <section id="certifications">
+        <Certificates isDarkMode={isDarkMode} />
+      </section>
+
+      <section id="contact">
+        <Contact isDarkMode={isDarkMode} />
+      </section>
+    </main>
+
+    <Footer isDarkMode={isDarkMode} />
+  </>
+);
+
 }
