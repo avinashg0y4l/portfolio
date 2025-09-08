@@ -15,7 +15,7 @@ import Timeline from "../components/Timelineupdate.jsx";
 
 export default function Home() {
   // Initialize state: default to light mode, mark as not mounted initially
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
   // Effect to determine the correct theme based on user preference/system

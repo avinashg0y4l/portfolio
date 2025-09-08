@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 const CertificationPage = () => {
   const [selectedCert, setSelectedCert] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
 
