@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { assets } from "@/public/assets/assets";  
 import React, { useEffect, useRef, useState } from "react";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
@@ -14,7 +15,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     sideMenuRef.current.style.transform = "translateX(16rem)";
   };
 
-  // ✅ Save preference in localStorage
+  // Save theme in localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", isDarkMode ? "dark" : "light");
@@ -22,30 +23,26 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     }
   }, [isDarkMode]);
 
-  // ✅ Load preference on first mount
+  // Load theme from localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
-      if (savedTheme) {
-        setIsDarkMode(savedTheme === "dark");
-      }
+      if (savedTheme) setIsDarkMode(savedTheme === "dark");
     }
   }, [setIsDarkMode]);
 
-  // ✅ Scroll detection
+  // Scroll detection
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScroll(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScroll(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Background effect */}
+      {/* Background */}
       <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
-        <Image src="/assets/header-bg-color.png" alt="Header background" width={1200} height={400} className="w-full" />
+        <Image src={assets.header_bg_color} alt="Header background" width={1200} height={400} className="w-full" />
       </div>
 
       <nav
@@ -58,8 +55,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         {/* Logo */}
         <Link href="/">
           <Image
-            src={isDarkMode ? "/assets/logo-dark.png" : "/assets/logo.png"}
-            alt="Avinash Goyal Portfolio Logo"
+            src={isDarkMode ? assets.logo_dark : assets.logo}
+            alt="Portfolio Logo"
             width={120}
             height={40}
             className="w-28 cursor-pointer mr-14"
@@ -67,13 +64,11 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         </Link>
 
         {/* Desktop Menu */}
-        <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
+        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
             isScroll
               ? ""
               : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"
-          }`}
-        >
+          }`}>
           <li><Link className="font-Ovo" href="/#top">Home</Link></li>
           <li><Link className="font-Ovo" href="/#about">About me</Link></li>
           <li><Link className="font-Ovo" href="/#services">Services</Link></li>
@@ -85,9 +80,9 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         {/* Actions */}
         <div className="flex items-center gap-4">
           {/* Dark mode toggle */}
-          <button onClick={() => setIsDarkMode((prev) => !prev)}>
+          <button onClick={() => setIsDarkMode(prev => !prev)}>
             <Image
-              src={isDarkMode ? "/assets/sun-icon.png" : "/assets/moon_icon.png"}
+              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
               alt="Toggle theme"
               width={24}
               height={24}
@@ -102,7 +97,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           >
             Contact
             <Image
-              src={isDarkMode ? "/assets/arrow-icon-dark.png" : "/assets/arrow-icon.png"}
+              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
               alt="Arrow"
               width={12}
               height={12}
@@ -110,10 +105,10 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             />
           </Link>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile Menu Toggle */}
           <button className="block md:hidden ml-3" onClick={openMenu}>
             <Image
-              src={isDarkMode ? "/assets/menu-white.png" : "/assets/menu_black.png"}
+              src={isDarkMode ? assets.menu_white : assets.menu_black}
               alt="Menu"
               width={24}
               height={24}
@@ -129,7 +124,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         >
           <div className="absolute right-6 top-6" onClick={closeMenu}>
             <Image
-              src={isDarkMode ? "/assets/close-white.png" : "/assets/close_black.png"}
+              src={isDarkMode ? assets.close_white : assets.close_black}
               alt="Close menu"
               width={20}
               height={20}
