@@ -5,10 +5,10 @@ const nextConfig = {
   output: "export", // for static export
 
   images: {
-    unoptimized: true,
+    unoptimized: true, // allows serving images without optimization
   },
 
-  // Only set basePath & assetPrefix in production (GitHub Pages)
+  // Only set basePath & assetPrefix in production
   ...(isProd
     ? {
         basePath: "/portfolio",
