@@ -1,6 +1,6 @@
 "use client";
-import { assets } from "@/assets/assets";
-import { workData } from "@/assets/workData";
+import { assets } from "@/public/assets/assets";
+import { workData } from "@/public/assets/workData";
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";

@@ -7,7 +7,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import { experiencesData } from "../assets/experienceData";
+import { experiencesData } from "../public/assets/experienceData";
 import { FaStar } from "react-icons/fa";
 
 // --- Experience Card with motion effect ---

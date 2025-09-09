@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { certificates } from "@/assets/certificates/certificatesData";
+import { certificates } from "@/public/assets/certificates/certificatesData";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 

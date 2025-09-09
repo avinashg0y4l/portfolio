@@ -1,16 +1,16 @@
-import { assets } from "@/assets/assets";
+import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 
-import cert1 from "../assets/certificates/SAP_Certificate.png";
-import cert2 from "../assets/certificates/salesforce.png";
-import cert3 from "../assets/certificates/Github.png";
-import cert4 from "../assets/certificates/IT_essential.png";
-import cert5 from "../assets/certificates/Kodacy.png";
-import cert6 from "../assets/certificates/tcs_codevita.png";
+import cert1 from "../public/assets/certificates/SAP_Certificate.png";
+import cert2 from "../public/assets/certificates/salesforce.png";
+import cert3 from "../public/assets/certificates/Github.png";
+import cert4 from "../public/assets/certificates/IT_essential.png";
+import cert5 from "../public/assets/certificates/Kodacy.png";
+import cert6 from "../public/assets/certificates/tcs_codevita.png";
 
 
 const MotionLink = motion(Link);

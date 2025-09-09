@@ -1,6 +1,5 @@
 import { Outfit, Ovo } from "next/font/google";
-import "./globals.css"; 
-
+import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -13,17 +12,15 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Portfolio - Avinash Goyal",
-  description: "",
+  title: "Avinash Goyal | Portfolio",
+  description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development",
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
       >
-        
         {children}
       </body>
     </html>
