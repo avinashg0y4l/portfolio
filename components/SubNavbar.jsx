@@ -66,15 +66,8 @@ const SubNavbar = () => {
         </button>
 
         {/* Close Button */}
-        <button
-          onClick={() => router.push("/")}
-          className="p-2 rounded-full border border-gray-400 dark:border-gray-600 
-          hover:bg-red-100 dark:hover:bg-red-600 transition"
-        >
-          <span className="text-lg font-bold text-gray-700 dark:text-gray-200">
-            ✕
-          </span>
-        </button>
+        <div  onClick={() => router.push("/")} className='hidden cursor-pointer lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50'>Close
+          <img src={isDarkMode ? assets.close_white : assets.close_white} alt="" className='w-3'/></div>
       </div>
     </nav>
   );
