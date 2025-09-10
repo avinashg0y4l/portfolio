@@ -15,6 +15,8 @@ export const metadata = {
   title: "Avinash Goyal | Portfolio",
   description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development",
 };
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">

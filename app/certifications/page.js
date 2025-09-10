@@ -5,8 +5,8 @@ import { certificates } from "@/public/assets/certificates/certificatesData";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SubNavbar from "@/components/SubNavbar";
 
 const CertificationPage = () => {
   const [selectedCert, setSelectedCert] = useState(null);
@@ -16,16 +16,16 @@ const CertificationPage = () => {
 
   // --- Mount & Theme Detection ---
   useEffect(() => {
-  setIsMounted(true);
-  const storedTheme = localStorage.getItem("theme");
+    setIsMounted(true);
+    const storedTheme = localStorage.getItem("theme");
 
-  if (storedTheme === "light") {
-    setIsDarkMode(false);
-  } else {
-    // Default = dark
-    setIsDarkMode(true);
-  }
-}, []);
+    if (storedTheme === "light") {
+      setIsDarkMode(false);
+    } else {
+      // Default = dark
+      setIsDarkMode(true);
+    }
+  }, []);
 
   // --- Apply Dark Mode ---
   useEffect(() => {
@@ -42,11 +42,11 @@ const CertificationPage = () => {
 
   return (
     <>
-      {/* ✅ Navbar */}
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      {/* ✅ Top Bar with Close + Theme Toggle */}
+      <SubNavbar />
 
       {/* Main Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -76,68 +76,58 @@ const CertificationPage = () => {
           ))}
         </div>
 
+        {/* Modal */}
         <AnimatePresence>
-  {selectedCert && (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setSelectedCert(null)}
-    >
-      <motion.div
-        className="relative w-[95%] md:w-[70%] lg:w-[60%] bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg my-12"
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
-        exit={{ scale: 0.9 }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Certificate Image */}
-        <Image
-          src={selectedCert.src}
-          alt={selectedCert.title}
-          width={1000}
-          height={700}
-          className="w-full h-auto rounded-lg object-contain mb-6"
-        />
+          {selectedCert && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedCert(null)}
+            >
+              <motion.div
+                className="relative w-[95%] md:w-[70%] lg:w-[60%] bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg my-12"
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.9 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Certificate Image */}
+                <Image
+                  src={selectedCert.src}
+                  alt={selectedCert.title}
+                  width={1000}
+                  height={700}
+                  className="w-full h-auto rounded-lg object-contain mb-6"
+                />
 
-        {/* SEO Text Content */}
-        <h2 className="text-2xl font-bold mb-2">{selectedCert.title}</h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-3">
-          <strong>Issued by:</strong> {selectedCert.issuer}
-        </p>
-        <p className="text-gray-700 dark:text-gray-300 mb-3">
-          <strong>Date:</strong> {selectedCert.date}
-        </p>
-        <p className="text-gray-700 dark:text-gray-300 mb-3">
-          <strong>Validation:</strong> {selectedCert.validation}
-        </p>
-        <p className="text-gray-700 dark:text-gray-300 leading-7">
-          {selectedCert.description}
-        </p>
+                {/* SEO Text Content */}
+                <h2 className="text-2xl font-bold mb-2">{selectedCert.title}</h2>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  <strong>Issued by:</strong> {selectedCert.issuer}
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  <strong>Date:</strong> {selectedCert.date}
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  <strong>Validation:</strong> {selectedCert.validation}
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 leading-7">
+                  {selectedCert.description}
+                </p>
 
-        {/* Close Button */}
-        <div
-          className="absolute top-3 right-4 text-gray-600 dark:text-gray-300 text-2xl cursor-pointer"
-          onClick={() => setSelectedCert(null)}
-        >
-          ✕
-        </div>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
-
-        {/* ✅ Back Button */}
-        <div className="flex justify-center mt-12">
-          <button
-            onClick={() => router.push("/")}
-            className="px-6 py-2 rounded-lg border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-          >
-            ⬅ Back to Home
-          </button>
-        </div>
+                {/* Close Button (modal) */}
+                <div
+                  className="absolute top-3 right-4 text-gray-600 dark:text-gray-300 text-2xl cursor-pointer"
+                  onClick={() => setSelectedCert(null)}
+                >
+                  ✕
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* ✅ Footer */}

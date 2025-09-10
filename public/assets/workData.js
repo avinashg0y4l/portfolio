@@ -26,7 +26,7 @@ export const workData = [
   description: "Personal portfolio website for a professional graphic designer.",
   fullDescription:
     "Developed a responsive and modern portfolio website for a professional graphic designer. The site highlights their creative projects with a clean gallery layout, smooth animations, and strong emphasis on typography. The design ensures both aesthetic appeal and performance, providing an engaging user experience while showcasing the designer’s work to potential clients.",
-  bgImage: "/assets./projects/designwithraghusite.gif",  // screenshot/thumbnail for card
+  bgImage: "/assets/projects/designwithraghusite.gif",  // screenshot/thumbnail for card
   live: "https://rahul-s-portfolio-tau.vercel.app/", // your deployed link
   // github not included because of code privacy
   preview: "/assets/projects/designwithraghusite.gif", // optional large screenshot inside popup

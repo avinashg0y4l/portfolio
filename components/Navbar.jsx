@@ -12,7 +12,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
     }
     const closeMenu = ()=>{
         sideMenuRef.current.style.transform = 'translateX(16rem)'
-    }
+    }   
 
     useEffect(()=>{
         window.addEventListener('scroll', ()=>{
