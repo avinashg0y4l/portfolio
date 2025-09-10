@@ -1,7 +1,7 @@
 "use client";
-import { assets } from "@/public/assets/assets";
-import { workData } from "@/public/assets/workData";
-import Image from "next/image";
+import { assets } from "@/lib/assets";
+import { workData } from "@/lib/workData";
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FaGithub, FaGlobe, FaTimes } from "react-icons/fa";
@@ -72,7 +72,7 @@ const Work = ({ isDarkMode }) => {
                 </p>
               </div>
               <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                <Image
+                <img
                   src={assets.send_icon}
                   alt="send icon"
                   className="w-5"
@@ -92,7 +92,7 @@ const Work = ({ isDarkMode }) => {
         className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover"
       >
         Show more
-        <Image
+        <img
           src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
           alt="Right arrow"
           className="w-4"

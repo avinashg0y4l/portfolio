@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { assets } from "@/public/assets/assets"; // adjust path if needed
+import { assets } from "@/lib/assets"; // adjust path if needed
 
 const SubNavbar = () => {
   const router = useRouter();
@@ -43,7 +43,7 @@ const SubNavbar = () => {
         className="flex items-center cursor-pointer"
         onClick={() => router.push("/")}
       >
-        <Image
+        <img
           src={isDarkMode ? assets.logo_dark : assets.logo}
           alt="Logo"
           className="w-28 mr-6"
@@ -58,7 +58,7 @@ const SubNavbar = () => {
           className="p-2 rounded-full border border-gray-400 dark:border-gray-600 
           hover:bg-gray-100 dark:hover:bg-gray-700 transition"
         >
-          <Image
+          <img
             src={isDarkMode ? assets.sun_icon : assets.moon_icon}
             alt="Theme Toggle"
             className="w-6"

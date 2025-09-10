@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { experiencesData } from "../public/assets/experienceData";
+import { experiencesData } from "../lib/experienceData";
 
 const Milestone = ({ experience, isActive, isDarkMode }) => {
   return (

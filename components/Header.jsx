@@ -1,5 +1,5 @@
-import { assets } from '@/public/assets/assets';
-import Image from 'next/image';
+import { assets } from '@/lib/assets';
+
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
@@ -12,7 +12,7 @@ const Header = () => {
         whileInView={{ scale: 1 }}
         transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
       >
-        <Image src={assets.profile_img} alt="Profile photo" className="rounded-full w-32" />
+        <img src={assets.profile_img} alt="Profile photo" className="rounded-full w-32" />
       </motion.div>
 
       <motion.h3
@@ -21,7 +21,7 @@ const Header = () => {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo"
       >
-        Hi! I'm Avinash Goyal <Image src={assets.hand_icon} alt="Waving hand" className="w-6" />
+        Hi! I'm Avinash Goyal <img src={assets.hand_icon} alt="Waving hand" className="w-6" />
       </motion.h3>
 
       <motion.h1
@@ -60,7 +60,7 @@ const Header = () => {
           href="#contact"
           className="px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 dark:bg-transparent"
         >
-          contact me <Image src={assets.right_arrow_white} alt="Arrow" className="w-4" />
+          contact me <img src={assets.right_arrow_white} alt="Arrow" className="w-4" />
         </motion.a>
 
         <motion.a
@@ -71,7 +71,7 @@ const Header = () => {
           download
           className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 bg-white dark:text-black"
         >
-          my resume <Image src={assets.download_icon} alt="Download icon" className="w-4" />
+          my resume <img src={assets.download_icon} alt="Download icon" className="w-4" />
         </motion.a>
       </div>
     </div>

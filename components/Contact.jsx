@@ -1,4 +1,4 @@
-import { assets } from '@/public/assets/assets';
+import { assets } from '@/lib/assets';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -114,7 +114,7 @@ const Contact = () => {
           type='submit'
           className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover'
         >
-          Submit now <Image src={assets.right_arrow_white} alt="Arrow icon" className='w-4' />
+          Submit now <img src={assets.right_arrow_white} alt="Arrow icon" className='w-4' />
         </motion.button>
 
         <p className="mt-4 text-center text-green-600 dark:text-green-400">{result}</p>

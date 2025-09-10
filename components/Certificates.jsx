@@ -1,26 +1,20 @@
-import { assets } from "@/public/assets/assets";
-import Image from "next/image";
+import { assets } from "@/lib/assets";
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 
-import cert1 from "../public/assets/certificates/SAP_Certificate.png";
-import cert2 from "../public/assets/certificates/salesforce.png";
-import cert3 from "../public/assets/certificates/Github.png";
-import cert4 from "../public/assets/certificates/IT_essential.png";
-import cert5 from "../public/assets/certificates/Kodacy.png";
-import cert6 from "../public/assets/certificates/tcs_codevita.png";
 
 
 const MotionLink = motion(Link);
 const certificates = [
-  { id: 1, src: cert1, title: "Certificate 1" },
-  { id: 2, src: cert2, title: "Certificate 2" },
-  { id: 3, src: cert3, title: "Certificate 3" },
-  { id: 4, src: cert4, title: "Certificate 4" },
-  { id: 5, src: cert5, title: "Certificate 5" },
-  { id: 6, src: cert6, title: "Certificate 6" },
+  { id: 1, src: assets.cert1, title: "Certificate 1" },
+  { id: 2, src: assets.cert2, title: "Certificate 2" },
+  { id: 3, src: assets.cert3, title: "Certificate 3" },
+  { id: 4, src: assets.cert4, title: "Certificate 4" },
+  { id: 5, src: assets.cert5, title: "Certificate 5" },
+  { id: 6, src: assets.cert6, title: "Certificate 6" },
   // ... more certificates
 ];
 
@@ -95,7 +89,7 @@ const Certificates = ({ isDarkMode }) => {
             className="relative w-full h-48 rounded-lg shadow-md overflow-hidden cursor-pointer"
             onClick={() => setSelectedCert(cert)}
           >
-            <Image src={cert.src} alt={cert.title} fill className="object-cover" />
+            <img src={cert.src} alt={cert.title} className="object-cover" />
             <div className="absolute bottom-0 left-0 w-full bg-black/40 text-white py-2 px-3 text-sm font-semibold">
               {cert.title}
             </div>
@@ -112,7 +106,7 @@ const Certificates = ({ isDarkMode }) => {
   className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover"
 >
   Show more
-  <Image
+  <img
     src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
     alt="Right arrow"
     className="w-4"
@@ -136,7 +130,7 @@ const Certificates = ({ isDarkMode }) => {
               exit={{ scale: 0.8 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
+              <img
                 src={selectedCert.src}
                 alt={selectedCert.title}
                 width={1000}

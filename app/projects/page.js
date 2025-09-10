@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-import { workData } from "@/public/assets/workData";
+import { workData } from "@/lib/workData";
 import Footer from "@/components/Footer";
 import SubNavbar from "@/components/SubNavbar";
 
