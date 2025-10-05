@@ -9,12 +9,12 @@ import Link from "next/link";
 
 const MotionLink = motion(Link);
 const certificates = [
-  { id: 1, src: assets.cert1, title: "Certificate 1" },
-  { id: 2, src: assets.cert2, title: "Certificate 2" },
-  { id: 3, src: assets.cert3, title: "Certificate 3" },
-  { id: 4, src: assets.cert4, title: "Certificate 4" },
-  { id: 5, src: assets.cert5, title: "Certificate 5" },
-  { id: 6, src: assets.cert6, title: "Certificate 6" },
+  { id: 1, src: assets.certSAP, title: "SAP Certificate" },
+  { id: 2, src: assets.certSalesforce, title: "Salesforce" },
+  { id: 3, src: assets.certGithub, title: "GitHub" },
+  { id: 4, src: assets.certIT, title: "IT Essentials" },
+  { id: 5, src: assets.certKodacy, title: "Kodacy" },
+  { id: 6, src: assets.certTCS, title: "TCS CodeVita" },
   // ... more certificates
 ];
 

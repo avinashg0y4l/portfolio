@@ -1,22 +1,32 @@
 "use client";
-import cert1 from "./SAP_Certificate.png";
-import cert2 from "./salesforce.png";
-import cert3 from "./Github.png";
-import cert4 from "./IT_essential.png";
-import cert5 from "./Kodacy.png";
-import cert6 from "./tcs_codevita.png";
-import cert7 from "./certificat_add_a-01.png";
-import cert8 from "./certificat_add_a-03.png";
-import cert9 from "./certificat_add_a-04.png";
-import cert10 from "./certificat_add_a-05.png";
-import cert11 from "./certificat_add_a-06.png";
-import cert12 from "./certificat_add_a-08.png";
-// Add more imports if needed
+
+import certSAP from "./SAP_Certificate.png";
+import certSalesforce from "./salesforce.png";
+import certGithub from "./Github.png";
+import certIT from "./IT_essential.png";
+import certKodacy from "./Kodacy.png";
+import certTCS from "./tcs_codevita.png";
+import certCISCO from "./CPA_C++_Cisco_netacd.png";
+import certEmbedded from "./Embedded_Sys_Internshala.png";
+import certDL from "./Fundamental_of_DL_Nvidia.png";
+import certLinkedinBA from "./Linkedin_learning_Intro_BA.png";
+import certWireless from "./Linkedin_learning_wireless_network_essential.png";
+import certMathworks from "./Mathworks_Virtual_internship.png";
+import certML from "./ML_NITLIT_Gorakhpur.png";
+import certOS from "./NPTELOperating_system.png";
+import certDBMS from "./NPTEL_DBMS.png";
+import certSemi from "./NPTEL_Funda_of_Semiconducor.png";
+import certSoftskill from "./NPTEL_Softskill.png";
+import certADCA from "./SAI_Softnet_ADCA.png";
+import certSpokenC from "./Spoken_tutorial_C_CPp.png";
+import certSpokenHTML from "./SPoken_tutorial_HTML.png";
+import certSpokenIntro from "./Spoken_tutorial_introduction_of_computers.png";
+import certIITJodhpur from "./IIT_jodhpur_Internship.png";
 
 export const certificates = [
   {
     id: 1,
-    src: cert1,
+    src: certSAP,
     title: "SAP Certificate",
     issuer: "SAP Global Certification",
     date: "March 2024",
@@ -26,7 +36,7 @@ export const certificates = [
   },
   {
     id: 2,
-    src: cert2,
+    src: certSalesforce,
     title: "Salesforce",
     issuer: "Salesforce Trailhead",
     date: "February 2024",
@@ -36,7 +46,7 @@ export const certificates = [
   },
   {
     id: 3,
-    src: cert3,
+    src: certGithub,
     title: "GitHub",
     issuer: "GitHub Education",
     date: "January 2024",
@@ -46,7 +56,7 @@ export const certificates = [
   },
   {
     id: 4,
-    src: cert4,
+    src: certIT,
     title: "IT Essentials",
     issuer: "Cisco Networking Academy",
     date: "December 2023",
@@ -56,7 +66,7 @@ export const certificates = [
   },
   {
     id: 5,
-    src: cert5,
+    src: certKodacy,
     title: "Kodacy",
     issuer: "Kodacy Platform",
     date: "November 2023",
@@ -66,7 +76,7 @@ export const certificates = [
   },
   {
     id: 6,
-    src: cert6,
+    src: certTCS,
     title: "TCS CodeVita",
     issuer: "Tata Consultancy Services (TCS)",
     date: "October 2023",
@@ -76,57 +86,150 @@ export const certificates = [
   },
   {
     id: 7,
-    src: cert7,
-    title: "Certificate A-01",
-    issuer: "Issuer A",
+    src: certCISCO,
+    title: "C++ Programming Essentials",
+    issuer: "Cisco Networking Academy",
     date: "September 2023",
     validation: "Valid Forever",
-    description: "Description for Certificate A-01."
+    description: "Completed Cisco’s CPA: Programming Essentials in C++ certification."
   },
   {
     id: 8,
-    src: cert8,
-    title: "Certificate A-03",
-    issuer: "Issuer B",
+    src: certEmbedded,
+    title: "Embedded Systems",
+    issuer: "Internshala",
     date: "August 2023",
     validation: "Valid Forever",
-    description: "Description for Certificate A-03."
+    description:
+      "Successfully completed Embedded Systems certification covering microcontrollers, hardware interfacing, and embedded C programming."
   },
   {
     id: 9,
-    src: cert9,
-    title: "Certificate A-04",
-    issuer: "Issuer C",
+    src: certDL,
+    title: "Fundamentals of Deep Learning",
+    issuer: "NVIDIA",
     date: "July 2023",
     validation: "Valid Forever",
-    description: "Description for Certificate A-04."
+    description:
+      "Completed NVIDIA’s Fundamentals of Deep Learning course, gaining hands-on knowledge in neural networks and AI model training."
   },
   {
     id: 10,
-    src: cert10,
-    title: "Certificate A-05",
-    issuer: "Issuer D",
+    src: certLinkedinBA,
+    title: "Intro to Business Analysis",
+    issuer: "LinkedIn Learning",
     date: "June 2023",
     validation: "Valid Forever",
-    description: "Description for Certificate A-05."
+    description: "Completed LinkedIn Learning’s Introduction to Business Analysis course."
   },
   {
     id: 11,
-    src: cert11,
-    title: "Certificate A-06",
-    issuer: "Issuer E",
+    src: certWireless,
+    title: "Wireless Network Essentials",
+    issuer: "LinkedIn Learning",
     date: "May 2023",
     validation: "Valid Forever",
-    description: "Description for Certificate A-06."
+    description: "Completed Wireless Networking Essentials covering post-5G wireless technologies."
   },
   {
     id: 12,
-    src: cert12,
-    title: "Certificate A-08",
-    issuer: "Issuer F",
+    src: certMathworks,
+    title: "MathWorks Virtual Internship",
+    issuer: "AICTE x MathWorks",
     date: "April 2023",
     validation: "Valid Forever",
-    description: "Description for Certificate A-08."
+    description:
+      "Completed MathWorks AICTE internship program, focusing on MATLAB, Simulink, and simulation-based modeling."
   },
-  // Add more certificates if needed
+  {
+    id: 13,
+    src: certML,
+    title: "Machine Learning",
+    issuer: "NIELIT Gorakhpur",
+    date: "March 2023",
+    validation: "Valid Forever",
+    description:
+      "Certified in Machine Learning fundamentals covering supervised and unsupervised algorithms."
+  },
+  {
+    id: 14,
+    src: certOS,
+    title: "Operating System",
+    issuer: "NPTEL",
+    date: "February 2023",
+    validation: "Valid Forever",
+    description: "Completed NPTEL course on Operating Systems."
+  },
+  {
+    id: 15,
+    src: certDBMS,
+    title: "Database Management Systems",
+    issuer: "NPTEL",
+    date: "January 2023",
+    validation: "Valid Forever",
+    description: "Completed NPTEL course on DBMS covering relational models, SQL, and transaction management."
+  },
+  {
+    id: 16,
+    src: certSemi,
+    title: "Fundamentals of Semiconductor Devices",
+    issuer: "NPTEL",
+    date: "December 2022",
+    validation: "Valid Forever",
+    description: "Completed NPTEL course covering semiconductors, diodes, and transistors."
+  },
+  {
+    id: 17,
+    src: certSoftskill,
+    title: "Developing Soft Skills & Personality",
+    issuer: "NPTEL",
+    date: "November 2022",
+    validation: "Valid Forever",
+    description: "Certified in Developing Soft Skills & Personality by NPTEL."
+  },
+  {
+    id: 18,
+    src: certADCA,
+    title: "Advanced Diploma in Computer Applications",
+    issuer: "SAI Softnet",
+    date: "October 2022",
+    validation: "Valid Forever",
+    description: "Completed ADCA program covering MS Office, basic programming, and IT tools."
+  },
+  {
+    id: 19,
+    src: certSpokenC,
+    title: "C/C++ Programming",
+    issuer: "Spoken Tutorial (IIT Bombay)",
+    date: "September 2022",
+    validation: "Valid Forever",
+    description: "Completed Spoken Tutorial certification for C and C++ programming."
+  },
+  {
+    id: 20,
+    src: certSpokenHTML,
+    title: "HTML",
+    issuer: "Spoken Tutorial (IIT Bombay)",
+    date: "August 2022",
+    validation: "Valid Forever",
+    description: "Completed Spoken Tutorial certification for HTML basics."
+  },
+  {
+    id: 21,
+    src: certSpokenIntro,
+    title: "Introduction to Computers",
+    issuer: "Spoken Tutorial (IIT Bombay)",
+    date: "July 2022",
+    validation: "Valid Forever",
+    description: "Completed Spoken Tutorial certification in Introduction to Computers."
+  },
+  {
+    id: 22,
+    src: certIITJodhpur,
+    title: "IIT Jodhpur Internship",
+    issuer: "IIT Jodhpur",
+    date: "July 2024",
+    validation: "Valid Forever",
+    description: "Research Internship at IIT Jodhpur on Traffic Flow Simulation Models."
+  }
 ];
