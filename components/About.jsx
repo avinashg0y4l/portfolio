@@ -42,8 +42,7 @@ const About = ({isDarkMode}) => {
             transition={{duration: 0.6, delay: 0.8}}
             className='flex-1'>
                 <p className='mb-10 max-w-2xl font-Ovo'
-                >I am an aspiring Software Developer with hands-on experience in robotics, embedded systems, and automation. During my academic journey, I’ve worked on real-time projects involving drone mission planning, computer vision, and traffic data analysis. I've also had the opportunity to collaborate with researchers during my internship at IIT Jodhpur, contributing to innovative solutions in intelligent transportation systems.</p>
-
+                >Aspiring Software Developer and ATL Instructor with hands-on experience in robotics, embedded systems, and automation. Worked on real-time projects in drone mission planning, computer vision, and intelligent transportation systems, including research experience at IIT Jodhpur.</p>
                 <motion.ul
                 initial={{opacity: 0}}
                 whileInView={{opacity: 1}}
