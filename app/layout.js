@@ -14,6 +14,43 @@ const ovo = Ovo({
 export const metadata = {
   title: "Avinash Goyal | Portfolio",
   description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development",
+  keywords: ["Avinash Goyal", "Portfolio", "Robotics", "Embedded Systems", "AI", "Software Development", "React", "Next.js"],
+  authors: [{ name: "Avinash Goyal" }],
+  creator: "Avinash Goyal",
+  publisher: "Avinash Goyal",
+  metadataBase: new URL("https://avinashg0y4l.github.io/portfolio"),
+  openGraph: {
+    title: "Avinash Goyal | Portfolio",
+    description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development",
+    url: "https://avinashg0y4l.github.io/portfolio",
+    siteName: "Avinash Goyal Portfolio",
+    images: [
+      {
+        url: "/assets/work-1.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Avinash Goyal | Portfolio",
+    description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development",
+    images: ["/assets/work-1.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 
