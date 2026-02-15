@@ -1,7 +1,7 @@
 "use client";
 import { workData } from "@/lib/workData";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FaGithub, FaGlobe, FaTimes } from "react-icons/fa";
 
