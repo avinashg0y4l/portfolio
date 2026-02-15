@@ -14,8 +14,8 @@ const ovo = Ovo({
 
 export const metadata = {
   title: "Avinash Goyal | Portfolio",
-  description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development",
-  keywords: ["Avinash Goyal", "Portfolio", "Robotics", "Embedded Systems", "AI", "Software Development", "React", "Next.js"],
+  description: "Portfolio of Avinash Goyal - Robotics, Embedded Systems, AI-driven Automation, and Software Development. Currently working with CoGrad.",
+  keywords: ["Avinash Goyal", "Portfolio", "Robotics", "Embedded Systems", "AI", "Software Development", "React", "Next.js", "CoGrad", "Tinkering Sir", "Avinash Goyal Bihar", "ATL Sir", "Avinash Goyal India", "Avinash Goyal CoGrad"],
   authors: [{ name: "Avinash Goyal" }],
   creator: "Avinash Goyal",
   publisher: "Avinash Goyal",
