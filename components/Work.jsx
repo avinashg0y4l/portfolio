@@ -1,5 +1,4 @@
 "use client";
-import { assets } from "@/lib/assets";
 import { workData } from "@/lib/workData";
 
 import React, { useState } from "react";
