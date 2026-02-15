@@ -55,23 +55,27 @@ const Work = ({ isDarkMode }) => {
         transition={{ delay: 0.9, duration: 0.6 }}
         className="grid grid-cols-auto my-10 gap-5 dark:text-black"
       >
-        {workData.slice(0,4).map((project, index) => (
+        {workData.slice(0, 4).map((project, index) => (
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
             key={index}
-            className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
+            className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group shadow-md hover:shadow-xl dark:shadow-gray-800 transition-all duration-500 overflow-hidden"
             style={{ backgroundImage: `url(${project.bgImage})` }}
             onClick={() => setSelectedProject(project)}
           >
-            <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
-              <div>
-                <h2 className="font-semibold">{project.title}</h2>
-                <p className="text-sm text-gray-700 line-clamp-1">
+            {/* Overlay Gradient for better text readability */}
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition duration-500"></div>
+
+            {/* Info Box */}
+            <div className="bg-white w-10/12 rounded-lg absolute bottom-5 left-1/2 -translate-x-1/2 py-4 px-6 flex items-center justify-between shadow-lg duration-500 group-hover:bottom-7 group-hover:scale-105">
+              <div className="flex-1 min-w-0 pr-4">
+                <h2 className="font-semibold text-lg text-gray-900 truncate">{project.title}</h2>
+                <p className="text-sm text-gray-600 line-clamp-1">
                   {project.description}
                 </p>
               </div>
-              <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
+              <div className="border rounded-full border-gray-900 w-10 h-10 flex-shrink-0 flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition-colors duration-300">
                 <img
                   src={assets.send_icon}
                   alt="send icon"
