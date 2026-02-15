@@ -79,6 +79,16 @@ export default function ProjectsPage() {
                       Live Demo
                     </a>
                   )}
+                  {project.download && (
+                    <a
+                      href={project.download}
+                      download
+                      className="px-4 py-2 bg-yellow-600 text-white rounded-lg text-sm shadow 
+                                 hover:bg-yellow-500 transition"
+                    >
+                      Download
+                    </a>
+                  )}
                   <button
                     onClick={() => setSelectedProject(project)}
                     className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm shadow 
@@ -167,6 +177,15 @@ export default function ProjectsPage() {
                       className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-500 transition"
                     >
                       Live Demo
+                    </a>
+                  )}
+                  {selectedProject.download && (
+                    <a
+                      href={selectedProject.download}
+                      download
+                      className="px-4 py-2 bg-yellow-600 text-white rounded-lg text-sm hover:bg-yellow-500 transition"
+                    >
+                      Download
                     </a>
                   )}
                 </div>
