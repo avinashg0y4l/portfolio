@@ -8,6 +8,7 @@ import { FaGithub, FaGlobe, FaTimes } from "react-icons/fa";
 
 import Link from "next/link";
 const MotionLink = motion(Link);
+import { assets } from "@/lib/assets";
 const Work = ({ isDarkMode }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -145,6 +146,15 @@ const Work = ({ isDarkMode }) => {
                     className="px-4 py-2 flex items-center gap-2 rounded-md bg-gray-800 text-white font-semibold hover:bg-gray-700 transition"
                   >
                     <FaGithub /> GitHub
+                  </a>
+                )}
+                {selectedProject.download && (
+                  <a
+                    href={selectedProject.download}
+                    download
+                    className="px-4 py-2 flex items-center gap-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
+                  >
+                    <img src={assets.download_icon} alt="Download" className="w-4 invert" /> Report
                   </a>
                 )}
               </div>
