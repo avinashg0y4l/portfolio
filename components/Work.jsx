@@ -9,8 +9,18 @@ import { FaGithub, FaGlobe, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 const MotionLink = motion(Link);
 import { assets } from "@/lib/assets";
-const Work = ({ isDarkMode }) => {
+import { useTheme } from "next-themes";
+
+const Work = () => {
+  const { resolvedTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const isDark = isMounted && resolvedTheme === 'dark';
 
   return (
     <motion.div
@@ -98,7 +108,7 @@ const Work = ({ isDarkMode }) => {
       >
         Show more
         <img
-          src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
+          src={isDark ? assets.right_arrow_bold_dark : assets.right_arrow_bold}
           alt="Right arrow"
           className="w-4"
         />

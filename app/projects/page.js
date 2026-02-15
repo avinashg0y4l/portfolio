@@ -9,30 +9,14 @@ import SubNavbar from "@/components/SubNavbar";
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
-  // --- Mount & Theme Detection ---
+  // --- Mount Detection ---
   useEffect(() => {
     setIsMounted(true);
-    const storedTheme = localStorage.getItem("theme");
-
-    if (storedTheme === "light") setIsDarkMode(false);
-    else setIsDarkMode(true);
   }, []);
 
-  // --- Apply Dark Mode ---
-  useEffect(() => {
-    if (!isMounted) return;
-
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDarkMode, isMounted]);
+  if (!isMounted) return null;
 
   return (
     <>
@@ -205,7 +189,7 @@ export default function ProjectsPage() {
       </motion.main>
 
       {/* Footer */}
-      <Footer isDarkMode={isDarkMode} />
+      <Footer />
     </>
   );
 }

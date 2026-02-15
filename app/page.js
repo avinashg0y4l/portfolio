@@ -13,45 +13,25 @@ import Certificates from "../components/Certificates";
 import Timeline from "../components/Timelineupdate";
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const storedTheme = localStorage.getItem("theme");
-
-    if (storedTheme === "dark" || (storedTheme === null && prefersDark)) {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
   }, []);
 
-  useEffect(() => {
-    if (!isMounted) return;
-
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDarkMode, isMounted]);
+  if (!isMounted) return null;
 
   return (
     <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode} />
-      <About isDarkMode={isDarkMode} />
-      <ExperienceTimeline isDarkMode={isDarkMode} />
-      <Services isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
-      <Certificates isDarkMode={isDarkMode} />
-      <Contact isDarkMode={isDarkMode} />
-      <Footer isDarkMode={isDarkMode} />
+      <Navbar />
+      <Header />
+      <About />
+      <ExperienceTimeline />
+      <Services />
+      <Work />
+      <Certificates />
+      <Contact />
+      <Footer />
     </>
   );
 }

@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { experiencesData } from "../lib/experienceData";
 
-const Milestone = ({ experience, isActive, isDarkMode }) => {
+const Milestone = ({ experience, isActive }) => {
   return (
     <motion.div
       className="flex-shrink-0 w-64 p-6 rounded-2xl border border-gray-400 
@@ -26,7 +26,7 @@ const Milestone = ({ experience, isActive, isDarkMode }) => {
   );
 };
 
-const HorizontalJourneyPinned = ({ isDarkMode }) => {
+const HorizontalJourneyPinned = () => {
   const containerRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -87,14 +87,14 @@ const HorizontalJourneyPinned = ({ isDarkMode }) => {
       <div className="sticky top-56">
         <div className="relative w-full overflow-hidden">
           {/* Timeline line */}
-<div className="absolute top-56 left-0 w-full h-[2px] bg-gray-400 dark:bg-gray-600"></div>
+          <div className="absolute top-56 left-0 w-full h-[2px] bg-gray-400 dark:bg-gray-600"></div>
 
-{/* Moving Dot */}
-<motion.div
-  className="absolute top-[200px] w-6 h-6 bg-blue-500 rounded-full shadow-lg z-10"
-  style={{ left: `${scrollProgress * 100}%`, translateX: "-50%" }}
-  transition={{ type: "spring", stiffness: 100, damping: 20 }}
-/>
+          {/* Moving Dot */}
+          <motion.div
+            className="absolute top-[200px] w-6 h-6 bg-blue-500 rounded-full shadow-lg z-10"
+            style={{ left: `${scrollProgress * 100}%`, translateX: "-50%" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          />
 
           {/* Milestones */}
           <div className="flex gap-20 px-8 py-12">
@@ -103,7 +103,6 @@ const HorizontalJourneyPinned = ({ isDarkMode }) => {
                 key={exp.id}
                 experience={exp}
                 isActive={idx <= activeIndex}
-                isDarkMode={isDarkMode}
               />
             ))}
           </div>

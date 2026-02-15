@@ -11,16 +11,29 @@ import { experiencesData } from "../lib/experienceData";
 import { FaStar } from "react-icons/fa";
 
 // --- Experience Card with motion effect ---
-const ExperienceCard = ({ experience, isDarkMode }) => {
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
+// --- Experience Card with motion effect ---
+const ExperienceCard = ({ experience }) => {
+  const { resolvedTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  const cardBackgroundColor = isDarkMode ? "#1e293b" : "#ffffff";
-  const cardTextColor = isDarkMode ? "#e2e8f0" : "#334155";
+  const isDark = isMounted && resolvedTheme === 'dark';
+
+  const cardBackgroundColor = isDark ? "#1e293b" : "#ffffff";
+  const cardTextColor = isDark ? "#e2e8f0" : "#334155";
   const cardArrowColor = cardBackgroundColor;
-  const dateTextColorClass = isDarkMode ? "text-gray-400" : "text-gray-600";
-  const titleColorClass = isDarkMode ? "text-white" : "text-gray-900";
-  const companyColorClass = isDarkMode ? "text-gray-300" : "text-gray-700";
-  const pointsColorClass = isDarkMode ? "text-gray-300" : "text-gray-600";
+  const dateTextColorClass = isDark ? "text-gray-400" : "text-gray-600";
+  const titleColorClass = isDark ? "text-white" : "text-gray-900";
+  const companyColorClass = isDark ? "text-gray-300" : "text-gray-700";
+  const pointsColorClass = isDark ? "text-gray-300" : "text-gray-600";
 
   const IconComponent = experience.icon || FaStar;
 
@@ -38,7 +51,7 @@ const ExperienceCard = ({ experience, isDarkMode }) => {
       dateClassName={`!text-sm !opacity-90 font-Ovo ${dateTextColorClass}`}
       iconStyle={{
         background:
-          experience.iconBg || (isDarkMode ? "#334155" : "#cbd5e1"),
+          experience.iconBg || (isDark ? "#334155" : "#cbd5e1"),
         color: "#fff",
         boxShadow: "none",
       }}
@@ -82,11 +95,20 @@ const ExperienceCard = ({ experience, isDarkMode }) => {
 };
 
 // --- Main Timeline Component ---
-const ExperienceTimeline = ({ isDarkMode }) => {
-  const timelineLineColor = isDarkMode
+const ExperienceTimeline = () => {
+  const { resolvedTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const isDark = isMounted && resolvedTheme === 'dark';
+
+  const timelineLineColor = isDark
     ? "rgba(100, 116, 139, 0.5)"
     : "rgba(156, 163, 175, 0.7)";
-  const endIconBg = isDarkMode ? "rgb(71, 85, 105)" : "rgb(156, 163, 175)";
+  const endIconBg = isDark ? "rgb(71, 85, 105)" : "rgb(156, 163, 175)";
 
   return (
     <section id="experience" className="py-16 md:py-24 scroll-mt-20">
@@ -100,7 +122,6 @@ const ExperienceTimeline = ({ isDarkMode }) => {
             <ExperienceCard
               key={experience.id}
               experience={experience}
-              isDarkMode={isDarkMode}
             />
           ))}
 

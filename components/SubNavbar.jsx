@@ -2,36 +2,21 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { assets } from "@/lib/assets"; // adjust path if needed
 
 const SubNavbar = () => {
   const router = useRouter();
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
-  // --- Mount & Theme Detection ---
   useEffect(() => {
     setIsMounted(true);
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "light") {
-      setIsDarkMode(false);
-    } else {
-      setIsDarkMode(true);
-    }
   }, []);
 
-  // --- Apply Dark Mode ---
-  useEffect(() => {
-    if (!isMounted) return;
+  if (!isMounted) return null;
 
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDarkMode, isMounted]);
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <nav
@@ -44,7 +29,7 @@ const SubNavbar = () => {
         onClick={() => router.push("/")}
       >
         <img
-          src={isDarkMode ? assets.logo_dark : assets.logo}
+          src={isDark ? assets.logo_dark : assets.logo}
           alt="Logo"
           className="w-28 mr-6"
         />
@@ -54,20 +39,25 @@ const SubNavbar = () => {
       <div className="flex items-center gap-6">
         {/* Theme Toggle */}
         <button
-          onClick={() => setIsDarkMode((prev) => !prev)}
+          onClick={() => setTheme(isDark ? 'light' : 'dark')}
           className="p-2 rounded-full border border-gray-400 dark:border-gray-600 
           hover:bg-gray-100 dark:hover:bg-gray-700 transition"
         >
           <img
-            src={isDarkMode ? assets.sun_icon : assets.moon_icon}
+            src={isDark ? assets.sun_icon : assets.moon_icon}
             alt="Theme Toggle"
             className="w-6"
           />
         </button>
 
-        {/* Close Button */}
-        <div  onClick={() => router.push("/")} className='hidden cursor-pointer lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50'>Close
-          <img src={isDarkMode ? assets.close_white : assets.close_white} alt="" className='w-3'/></div>
+        {/* Close Button - Visible on all devices now */}
+        <div
+          onClick={() => router.push("/")}
+          className='cursor-pointer flex items-center gap-3 px-6 py-2 border border-gray-500 rounded-full ml-2 font-Ovo dark:border-white/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition'
+        >
+          <span className="hidden sm:inline">Close</span>
+          <img src={isDark ? assets.close_white : assets.close_black} alt="Close" className='w-3' />
+        </div>
       </div>
     </nav>
   );
