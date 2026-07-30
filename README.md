@@ -20,11 +20,15 @@ Welcome to my personal portfolio built with **Next.js**, showcasing my projects,
 
 To run the development server locally:
 
+
+service now code
+
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+var gr = new GlideRecord('sys_properties');
+gr.addQuery('name','glide.identification_engine.multisource_enabled');
+gr.query();
+
+if (gr.next()) {
+    gr.value = "true";
+    gr.update();
+}
