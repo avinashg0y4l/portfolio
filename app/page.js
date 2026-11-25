@@ -11,6 +11,7 @@ import Services from "../components/Services";
 import Work from "../components/Work";
 import Certificates from "../components/Certificates";
 import Timeline from "../components/Timelineupdate";
+import ExperienceTest from "../components/experiencetest";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -26,7 +27,8 @@ export default function Home() {
       <Navbar />
       <Header />
       <About />
-      <ExperienceTimeline />
+     {/* <ExperienceTimeline />*/}
+      <ExperienceTest />
       <Services />
       <Work />
       <Certificates />
