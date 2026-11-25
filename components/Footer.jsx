@@ -1,14 +1,57 @@
+"use client";
+
 import { assets } from '@/lib/assets'
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { useTheme } from "next-themes";
+import { FaEye } from "react-icons/fa";
+
+let isRequestSent = false;
+const INITIAL_OFFSET = 207;
 
 const Footer = () => {
   const { resolvedTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
+  const [views, setViews] = useState(null);
 
   useEffect(() => {
     setIsMounted(true);
+
+    if (isRequestSent) return;
+    isRequestSent = true;
+
+    const fetchViews = async () => {
+      const baseUrl = "https://api.counterapi.dev/v1/avinashg0y4l-port-2026/visits";
+      const hasVisited = sessionStorage.getItem("portfolio_visited");
+
+      if (!hasVisited) {
+        sessionStorage.setItem("portfolio_visited", "true");
+      }
+
+      try {
+        const url = hasVisited ? baseUrl : `${baseUrl}/up`;
+        const res = await fetch(url, { cache: "no-store" });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (typeof data?.count === "number") {
+            const totalViews = data.count + INITIAL_OFFSET;
+            localStorage.setItem("last_known_views", String(totalViews));
+            setViews(totalViews);
+            return;
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch views:", error);
+      }
+
+      // Fallback agar rate-limit ya offline ho
+      const saved = Number(localStorage.getItem("last_known_views") || INITIAL_OFFSET);
+      const nextCount = hasVisited ? saved : saved + 1;
+      localStorage.setItem("last_known_views", String(nextCount));
+      setViews(nextCount);
+    };
+
+    fetchViews();
   }, []);
 
   const isDark = isMounted && resolvedTheme === 'dark';
@@ -24,15 +67,21 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6'>
-        <p>© 2025 avinashg0y4l. All rights reserved.</p>
-        <ul className='flex items-center gap-10 justify-center mt-4 sm:mt-0'>
+      <div className='text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6 gap-4'>
+        <p>© 2026 avinashg0y4l. All rights reserved.</p>
+
+        {/* Live Visitor Counter Pill */}
+        <div className='w-max mx-auto sm:mx-0 my-3 sm:my-0 flex items-center gap-2 px-3.5 py-1 rounded-full border border-gray-400 dark:border-white/30 text-sm font-Ovo text-gray-700 dark:text-white/85'>
+          <FaEye className='w-3.5 h-3.5' />
+          <span>{views !== null ? `${views.toLocaleString()} Views` : "... Views"}</span>
+        </div>
+
+        <ul className='flex items-center gap-10 justify-center'>
           <li><a target='_blank' href="https://github.com/avinashg0y4l/">GitHub</a></li>
           <li><a target='_blank' href="https://www.linkedin.com/in/avinash-goyal-g0y4l/">LinkedIn</a></li>
           <li><a target='_blank' href="#">Twitter</a></li>
         </ul>
       </div>
-
     </div>
   )
 }
