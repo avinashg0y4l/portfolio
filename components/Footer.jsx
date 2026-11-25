@@ -20,21 +20,25 @@ const Footer = () => {
     isRequestSent = true;
 
     const fetchViews = async () => {
-      const baseUrl = "https://api.counterapi.dev/v1/avinashg0y4l-port-2026/visits";
+      const baseUrl = "https://api.counterapi.dev/v2/avinashg0y4l-port-2026/visits";
       const hasVisited = sessionStorage.getItem("portfolio_visited");
 
       if (!hasVisited) {
         sessionStorage.setItem("portfolio_visited", "true");
       }
 
+      const saved = Number(localStorage.getItem("last_known_views") || INITIAL_OFFSET);
+
       try {
         const url = hasVisited ? baseUrl : `${baseUrl}/up`;
         const res = await fetch(url, { cache: "no-store" });
 
         if (res.ok) {
-          const data = await res.json();
-          if (typeof data?.count === "number") {
-            const totalViews = data.count + INITIAL_OFFSET;
+          const json = await res.json();
+          const rawCount = json?.data?.up_count ?? json?.up_count ?? json?.count;
+
+          if (typeof rawCount === "number") {
+            const totalViews = Math.max(rawCount + INITIAL_OFFSET, saved);
             localStorage.setItem("last_known_views", String(totalViews));
             setViews(totalViews);
             return;
@@ -44,8 +48,7 @@ const Footer = () => {
         console.error("Failed to fetch views:", error);
       }
 
-      // Fallback agar rate-limit ya offline ho
-      const saved = Number(localStorage.getItem("last_known_views") || INITIAL_OFFSET);
+      // Fallback agar offline ho
       const nextCount = hasVisited ? saved : saved + 1;
       localStorage.setItem("last_known_views", String(nextCount));
       setViews(nextCount);
